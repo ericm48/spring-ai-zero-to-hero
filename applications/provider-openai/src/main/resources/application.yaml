@@ -1,3 +1,4 @@
+---
 spring:
   application:
     name: openai
@@ -13,6 +14,7 @@ spring:
             - weatherFunction
           n: 3
           model: "gpt-4o"
+
 management:
   endpoint:
     health:
@@ -21,6 +23,11 @@ management:
     web:
       exposure:
         include: "*"
+logging:
+  level:
+    org:
+      springframework: 
+        ai: DEBUG
 
 ---
 spring:
@@ -34,6 +41,10 @@ spring:
 
 ---
 spring:
+  flyway:
+    baselineOnMigrate: true
+#    init-sqls:    
+#    - V1__test.sql
   config:
     activate:
       on-profile: pgvector

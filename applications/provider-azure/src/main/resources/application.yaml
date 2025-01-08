@@ -1,14 +1,16 @@
-
+---
 spring:
+  application:
+    name: azure-provider
+  profiles:
+    active: # pgvector
   config:
     import: "optional:classpath:/creds.yaml"
-  profiles:
-    active: #pgvector
   ai:
-    vectorstore:
-      azure:
-        initialize-schema: true
-        index-name: spring-ai-document-index
+#    vectorstore:
+#      azure:
+#        initialize-schema: true
+#        index-name: spring-ai-document-index
     azure:
       openai:
         chat:
@@ -17,9 +19,9 @@ spring:
               - weatherFunction
             temperature: 0.7
 management:
-  tracing:
-    sampling:
-      probability: 1.0
+#  tracing:
+#    sampling:
+#      probability: 1.0
   endpoint:
     health:
       show-details: always
@@ -30,7 +32,7 @@ management:
 logging:
   level:
     org:
-      springframework:
+      springframework: 
         ai: DEBUG
 
 ---

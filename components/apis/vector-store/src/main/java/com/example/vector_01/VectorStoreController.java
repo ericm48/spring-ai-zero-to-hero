@@ -32,6 +32,9 @@ public class VectorStoreController {
   @GetMapping("/load")
   public String load() throws IOException {
     // turn the json specs file into a document per bike
+
+    String msg = null;
+
     DocumentReader reader =
         new JsonReader(
             this.dataFiles.getBikesResource(), "name", "price", "shortDescription", "description");
@@ -49,7 +52,11 @@ public class VectorStoreController {
       logger.info("vector store contents written to {}", file.getAbsolutePath());
     }
 
-    return "vector store loaded with %s documents".formatted(documents.size());
+    msg = "vector store loaded with %s documents".formatted(documents.size());
+
+    logger.info(msg);
+
+    return (msg);
   }
 
   @GetMapping("query")

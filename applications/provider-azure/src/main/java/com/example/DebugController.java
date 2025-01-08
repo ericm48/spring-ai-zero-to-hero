@@ -12,11 +12,20 @@ public class DebugController {
   @Value("${spring.ai.azure.openai.endpoint:notfound}")
   private String endpoint;
 
+  @Value("${spring.ai.azure.openai.chat.options.deployment-name:notfound}")
+  private String deploymentName;
+
   @GetMapping("/debug")
   public String getDebug() {
-    return "You are running Azure OpenAI Application with apiKey="
+    return "You are running Azure OpenAI Application with: \n"
+        + "apiKey="
         + apiKey
-        + " and endpoint="
-        + endpoint;
+        + "\n"
+        + "endpoint="
+        + endpoint
+        + "\n"
+        + "deploymentName="
+        + deploymentName
+        + "\n";
   }
 }
