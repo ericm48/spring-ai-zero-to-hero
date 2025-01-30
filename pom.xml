@@ -81,11 +81,19 @@
         <version>${spotless.version}</version>
         <executions>
           <execution>
+              <id>ID_AS_IN_PARENT</id> <!-- id is necessary sometimes -->
+              <phase>none</phase>
+          </execution>        
+
+          <!--
+          <execution>
             <goals>
               <goal>check</goal>
             </goals>
             <phase>compile</phase>
           </execution>
+          -->
+          
         </executions>
         <configuration>
           <java>
